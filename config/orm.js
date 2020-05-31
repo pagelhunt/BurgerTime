@@ -6,20 +6,24 @@ var connection = require("./connection.js");
 
 
 // Helper functions for SQL syntax
-function printQuestionMarks(num) {
+function printQuestionMarks(num) 
+{
     var arr = [];
 
-    for (var i = 0; i < num; i++) {
+    for (var i = 0; i < num; i++) 
+    {
         arr.push("?");
     }
 
     return arr.toString();
 }
 
-function objtoSql(ob) {
+function objtoSql(ob) 
+{
     var arr = [];
 
-    for (var key in ob) {
+    for (var key in ob) 
+    {
         arr.push(key + "=" + ob[key]);
     }
 
@@ -27,58 +31,45 @@ function objtoSql(ob) {
 }
 
 
-// ORM object to perform SQL queries
-var orm = {
 
-    // return all results
-    // selectAll()
+var orm = 
+{
     selectAll: function (cb) {
-        // mysql call, get all * from table burgers (db already defined in connection)
         var queryString = "SELECT * FROM burgers;";
         connection.query(queryString, function (err, result) {
-            // stop if error
-            if (err) {
+            if (err) 
+            {
                 throw err;
             }
-            // return result to callback
+
             cb(result);
         });
     },
 
-    // insert a record 
-    // insertOne()
+
     insertOne: function (burger, cb) {
-        // mysql call, insert a record into table burgers (db already defined in connection)
-        // ? denotes value to be inserted into query string, i.e. [burger]
         var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
         connection.query(queryString, burger, function (err, result) {
-            // stop if error
-            if (err) {
+            if (err) 
+            {
                 throw err;
             }
-            // return result to callback
+
             cb(result);
         });
     },
 
-    // update a value in a record
-    // updateOne()
     updateOne: function (id, cb) {
-        // mysql call, update a value in a record in table burgers (db already defined in connection)
-        // change value 'devoured' to true
-        // ? denotes value to be inserted into query string, i.e. [id]
+      
         var queryString = "UPDATE burgers SET devoured=true WHERE id=(?)";
         connection.query(queryString, id, function (err, result) {
-            // stop if error
-            if (err) {
+            if (err) 
+            {
                 throw err;
             }
-            // return result to callback
             cb(result);
         });
     }
 
 };
-
-// export this home-brewed ORM for use by model (how MVC programs interacts with data)
 module.exports = orm;
