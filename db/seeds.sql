@@ -1,4 +1,4 @@
-USE eatDaBurger;
+USE burgerTime-db;
 
 INSERT INTO burgers
     (burger_name, devoured)

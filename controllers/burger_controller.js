@@ -25,7 +25,6 @@ router.post("/burgers", function (req, res) {
 
 router.put("/burgers/:id", function (req, res) {
 
-    // id from the request
     var id = req.params.id;
 
     console.log("id", id);
@@ -35,6 +34,5 @@ router.put("/burgers/:id", function (req, res) {
     })
 
 });
-
 
 module.exports = router;

@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS burgers_db;
-CREATE DATABASE eatDaBurger;
+CREATE DATABASE burgerTime-db;
 
-USE eatDaBurger;
+USE burgerTime-db;
 
 CREATE TABLE burgers
 (

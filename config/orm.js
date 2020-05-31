@@ -1,11 +1,5 @@
-// dependencies
 var connection = require("./connection.js");
 
-// Execute the necessary MySQL commands in the controllers.
-// These are the methods you will need to use in order to retrieve and store data in your DB.
-
-
-// Helper functions for SQL syntax
 function printQuestionMarks(num) 
 {
     var arr = [];
@@ -30,8 +24,6 @@ function objtoSql(ob)
     return arr.toString();
 }
 
-
-
 var orm = 
 {
     selectAll: function (cb) {
@@ -45,7 +37,6 @@ var orm =
             cb(result);
         });
     },
-
 
     insertOne: function (burger, cb) {
         var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
